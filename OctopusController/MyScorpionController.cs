@@ -23,6 +23,7 @@ namespace OctopusController
 
         
         #region public
+
         public void InitLegs(Transform[] LegRoots,Transform[] LegFutureBases, Transform[] LegTargets)
         {
             _legs = new MyTentacleController[LegRoots.Length];

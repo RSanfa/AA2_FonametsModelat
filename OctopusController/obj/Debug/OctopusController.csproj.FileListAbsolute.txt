@@ -36,3 +36,9 @@ E:\Trabajo\Classes Enti\Practicas2019-20\delivery2-2019-20\MyOctopusLibrary\Octo
 E:\Trabajo\Classes Enti\Practicas2019-20\delivery2-2019-20\MyOctopusLibrary\OctopusController\OctopusController\obj\Debug\OctopusController.csproj.CopyComplete
 E:\Trabajo\Classes Enti\Practicas2019-20\delivery2-2019-20\MyOctopusLibrary\OctopusController\OctopusController\obj\Debug\OctopusController.dll
 E:\Trabajo\Classes Enti\Practicas2019-20\delivery2-2019-20\MyOctopusLibrary\OctopusController\OctopusController\obj\Debug\OctopusController.pdb
+C:\Users\kevin\Documents\Enti\2021-2022\Animacion de personajes\AA2_FonametsModelat\OctopusController\bin\Debug\OctopusController.dll
+C:\Users\kevin\Documents\Enti\2021-2022\Animacion de personajes\AA2_FonametsModelat\OctopusController\bin\Debug\OctopusController.pdb
+C:\Users\kevin\Documents\Enti\2021-2022\Animacion de personajes\AA2_FonametsModelat\OctopusController\obj\Debug\OctopusController.csproj.CoreCompileInputs.cache
+C:\Users\kevin\Documents\Enti\2021-2022\Animacion de personajes\AA2_FonametsModelat\OctopusController\obj\Debug\OctopusController.csproj.CopyComplete
+C:\Users\kevin\Documents\Enti\2021-2022\Animacion de personajes\AA2_FonametsModelat\OctopusController\obj\Debug\OctopusController.dll
+C:\Users\kevin\Documents\Enti\2021-2022\Animacion de personajes\AA2_FonametsModelat\OctopusController\obj\Debug\OctopusController.pdb
