@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using UnityEngine;
 
+//This code is created by Roger Sanfeliu & Kevin Elortza
 
 namespace OctopusController
 {
