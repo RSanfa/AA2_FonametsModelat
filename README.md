@@ -1,4 +1,4 @@
-AA2_FonametsModelat
+AA2_FonametsModelat.
 
 Team Description
 	This grup is formed by Kevin Elortza and Roger Sanfeliu  with ID: 13
