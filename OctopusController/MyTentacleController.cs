@@ -33,7 +33,27 @@ namespace OctopusController
                     if (t.childCount > 0)
                         GetJointLeg(t.gameObject, false, ref bones);
                     else
-                        _endEffectorSphere = t.gameObject.transform;
+                        _endEffectorSphere = t;
+                }
+            }
+        }
+
+        void GetJointTail(GameObject go, ref List<Transform> bones)
+        {
+            bones.Add(go.transform);
+            //Debug.Log("from: " + go.name);
+            foreach(Transform t in go.transform)
+            {
+                //Debug.Log("childrens: " + t.name);
+                if (t.GetComponent<MeshRenderer>() == null)
+                {
+                    if (t.childCount > 0)
+                        GetJointTail(t.gameObject, ref bones);
+                    else
+                    {
+                        _endEffectorSphere = t;
+                        bones.Add(t.transform);
+                    }
                 }
             }
         }
@@ -69,7 +89,7 @@ namespace OctopusController
                     GetJointLeg(root.gameObject, true, ref _boneTmp);
                     break;
                 case TentacleMode.TAIL:
-                    GetJointLeg(root.gameObject, true, ref _boneTmp);
+                    GetJointTail(root.gameObject, ref _boneTmp);
                     //TODO: in _endEffectorsphere you keep a reference to the red sphere 
                     break;
                 case TentacleMode.TENTACLE:
