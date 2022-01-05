@@ -33,7 +33,10 @@ namespace OctopusController
                     if (t.childCount > 0)
                         GetJointLeg(t.gameObject, false, ref bones);
                     else
+                    {
                         _endEffectorSphere = t;
+                        bones.Add(t.transform);
+                    }
                 }
             }
         }
