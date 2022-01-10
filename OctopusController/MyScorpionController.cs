@@ -68,12 +68,11 @@ namespace OctopusController
                 //TODO: initialize anything needed for the FABRIK implementation
                 legsMoving[i] = false;
                 //aqui se inizializa la longitud de cada pata
-                for(int j = 0; j < _legs[i].Bones.Length-3; j++)
+                for(int j = 0; j < _legs[i].Bones.Length-1; j++)
                 {
                     legsLength[i] += Vector3.Distance(_legs[i].Bones[j].position, _legs[i].Bones[j + 1].position);
                 }
             }
-
             legFutureBases = LegFutureBases;
             legTargets = LegTargets;
         }
@@ -219,13 +218,14 @@ namespace OctopusController
             {
                 //se calcula la distancia entre el origen y el target
                 float dist = Vector3.Distance(_legs[i].Bones[0].position, legTargets[i].position);
-                //se mira si la distancia es mas grande que la longitud del leg
+                //se mira si la distancia es mas grande que la longitud del le
+
                 if (dist > legsLength[i])
                 {
                     //el target no se puede alcanzar
                     for (int j = 0; j < _legs[i].Bones.Length - 1; j++)
                     {
-                        //se busca la distancia entre el join j y el target i
+                        //se busca la distancia entre el joint j y el target i
                         float r = Vector3.Distance(_legs[i].Bones[j].position, legTargets[i].position);
                         float l = legsLength[j] / r;
 
@@ -236,8 +236,8 @@ namespace OctopusController
                 else
                 {
                     //se puede alcanzar el target
-                    legsInitPos[i] = _legs[i].Bones[0].position;
-                    updateLegs(i);
+                    /*legsInitPos[i] = _legs[i].Bones[0].position;
+                    updateLegs(i);*/
                 }
             }
         }
