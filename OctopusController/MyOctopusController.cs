@@ -167,8 +167,8 @@ namespace OctopusController
 
                         //float Mtwist = Mathf.Cos(_twistMax / 2);
                         //float mtwist = Mathf.Cos(_twistMin / 2);
-                        //float Mswing = Mathf.Cos(_swingMax / 2);
-                        //float mswing = Mathf.Cos(_swingMin / 2);
+                        float Mswing = Mathf.Cos(_swingMax / 2);
+                        float mswing = Mathf.Cos(_swingMin / 2);
                         _tentacles[i].Bones[j].Rotate(rotationAxis, theta, Space.World);
 
                         Quaternion T, S;
@@ -176,6 +176,11 @@ namespace OctopusController
                         DecomposeSwingTwist(_tentacles[i].Bones[j].localRotation, new Vector3(0, 1f, 0), out S, out T);
 
                         T = new Quaternion(0, 0, 0, 1f);
+
+                        if (S.w > Mswing)
+                            S.w = Mswing;
+                        else if (S.w < mswing)
+                            S.w = mswing;
 
                         _tentacles[i].Bones[j].localRotation = S;// * T;
 

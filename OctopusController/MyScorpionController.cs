@@ -42,7 +42,7 @@ namespace OctopusController
 
         //Ejercicio 3
         float threshold = 0.0001f;
-        float minAnimTreshold = 1f;
+        float minAnimTreshold = 0.9f;
         float animDuration = 0.5f;//esto se tendra que ajustar para que la animacion se vea bien
         //guardamos la posicion de la futureBase en cuanto alcanzamos el umbral
         Vector3[] FixedFutureBase = new Vector3[6];
@@ -291,7 +291,26 @@ namespace OctopusController
 
                 for(int j = 0; j < _legs[i].Bones.Length; j++)
                 {
+                    Vector3 v1, v2, axis;
+                    float angle;
+
+                    if (j != _legs[i].Bones.Length - 1)
+                    {
+                        v1 = _legs[i].Bones[j + 1].position - _legs[i].Bones[j].position;
+                        v2 = copy[j + 1] - copy[j];
+                        axis = Vector3.Cross(v1, v2);
+                        angle = Vector3.Angle(v1, v2);
+                    }
+                    else
+                    {
+                        v1 = legTargets[i].position - _legs[i].Bones[j].position;
+                        v2 = legTargets[i].position - copy[j];
+                        axis = Vector3.Cross(v1, v2);
+                        angle = Vector3.Angle(v1, v2);
+                    }
+
                     _legs[i].Bones[j].position = copy[j];
+                    _legs[i].Bones[j].Rotate(axis, angle, Space.World);
                 }
 
                 FABRIKLerp(i);
@@ -433,12 +452,12 @@ namespace OctopusController
             Vector3 point = ForwardKinematics();
             if (norm)
             {
-               Debug.Log("end effector global pos: " + point);
-               Debug.Log("posicion real del end effector" + _tail.Bones[5].position);
+               //Debug.Log("end effector global pos: " + point);
+               //Debug.Log("posicion real del end effector" + _tail.Bones[5].position);
 
                 for(int i = 0; i < _tail.Bones.Length; i++)
                 {
-                   Debug.Log(_tail.Bones[i].name + " local position: " + _tail.Bones[i].localPosition);
+                   //Debug.Log(_tail.Bones[i].name + " local position: " + _tail.Bones[i].localPosition);
                 }
                 //Debug.Break();
             }
@@ -451,11 +470,12 @@ namespace OctopusController
             Vector3 prevPoint = _tail.Bones[0].position;
             // Takes object initial rotation into account
             Quaternion rotation = Quaternion.identity;//transform.rotation;
+            Debug.Log(_tail.Bones[0].name + ": " + _tail.Bones[0].position);
             //TODO
             for (int i = 1; i < _tail.Bones.Length; i++)
             {                                   
                 rotation *= Quaternion.AngleAxis(TailJointAngles[i - 1], TailJointAxis[i - 1]);
-
+                Debug.Log(_tail.Bones[i].name + ": " + _tail.Bones[i].position);
                 Vector3 nextPoint = prevPoint + rotation * TailJointStartOffset[i];
                 prevPoint = nextPoint;
             }
